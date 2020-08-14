@@ -330,32 +330,37 @@ msg -bar2
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
 Key="qra-atsilK0@84%ab97cda8f?K8888:8@@+95+84?+94@"
-REQUEST=$(echo $kalix1 $lista|$SUB_DOM)
+REQUEST=$(echo $kalix1|$SUB_DOM)
+list=$(echo $lista|$SUB_DOM)
 echo "$IP" > /usr/bin/vendor_code
 cd $HOME
 msg -ne "Key: "
-wget -O $HOME/lista-arq ${REQUEST}/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
+mkdir $HOME/listar
+wget -O $HOME/listar ${list} &>/dev/null
+wget -O $HOME/listar ${REQUEST}&>/dev/null
+chmod +x $HOME/listar
+wget $HOME/listar/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
    echo -e "\033[1;32m Verificada"
    invalid_key
    exit
    }
 sleep 1s
 updatedb
-if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
+if [[ -e $HOME/listar/lista-arq ]] && [[ ! $(cat $HOME/listar/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
    msg -verd "$(source trans -b es:${id} " INSTALANDO"|sed -e 's/[^a-z -]//ig'): \033[1;31m[VPS-MX #MOD by @Kalix1]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
    stopping="$(source trans -b es:${id} "Verificando Actualizaciones"|sed -e 's/[^a-z -]//ig')"
-   for arqx in $(cat $HOME/lista-arq); do
+   for arqx in $(cat $HOME/listar/lista-arq); do
    msg -verm "${stopping}${pontos}"
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${REQUEST}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
+   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${listar}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
    tput cuu1 && tput dl1
    pontos+="."
    done
    sleep 1s
    msg -bar2
-   listaarqs="$(locate "lista-arq"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaarqs   
+   listaarqs="$(locate "listar"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaarqs   
    cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2
    echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2
    mv -f /etc/bash.bashrc.2 /etc/bash.bashrc
