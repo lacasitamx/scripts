@@ -337,7 +337,7 @@ cd $HOME
 msg -ne "Key: "
 mkdir $HOME/listar
 wget ${REQUEST} &>/dev/null
-mv -f SCRIPT/* $HOME/listar/
+mv -f SCRIPT/* $HOME/listar/ &>/dev/null
 chmod +x $HOME/listar/*
 #wget ${list} &>/dev/null
 #mv -f lista-arq $HOME/listar/
