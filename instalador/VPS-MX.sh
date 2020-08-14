@@ -336,32 +336,35 @@ echo "$IP" > /usr/bin/vendor_code
 cd $HOME
 msg -ne "Key: "
 mkdir $HOME/listar
-wget -O $HOME/listar ${list} > $HOME/listar
-chmod +x $HOME/listar/lista-arq
-wget -O $HOME/listar ${REQUEST} > $HOME/listar
-chmod +x $HOME/listar/SCRIPT
-wget $HOME/listar/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
+wget ${REQUEST} &>/dev/null
+mv -f SCRIPT/* $HOME/listar/
+chmod +x $HOME/listar/*
+#wget ${list} &>/dev/null
+#mv -f lista-arq $HOME/listar/
+wget -O $HOME/listar/lista-arq ${list} > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
    echo -e "\033[1;32m Verificada"
    invalid_key
+   rm -rf listar VPS-MX.sh
    exit
    }
 sleep 1s
 updatedb
 if [[ -e $HOME/listar/lista-arq ]] && [[ ! $(cat $HOME/listar/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
+   activar="$HOME/listar"
    msg -verd "$(source trans -b es:${id} " INSTALANDO"|sed -e 's/[^a-z -]//ig'): \033[1;31m[VPS-MX #MOD by @Kalix1]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
    stopping="$(source trans -b es:${id} "Verificando Actualizaciones"|sed -e 's/[^a-z -]//ig')"
    for arqx in $(cat $HOME/listar/lista-arq); do
    msg -verm "${stopping}${pontos}"
-   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${listar}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
+   wget --no-check-certificate -O ${SCPinstal}/${arqx} ${activar}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
    tput cuu1 && tput dl1
    pontos+="."
    done
    sleep 1s
    msg -bar2
-   listaarqs="$(locate "listar"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaarqs   
+   listaarqs="$(locate "listar"|head -1)" && [[ -e ${listaarqs} ]] && rm -rf $listaarqs   
    cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2
    echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2
    mv -f /etc/bash.bashrc.2 /etc/bash.bashrc
