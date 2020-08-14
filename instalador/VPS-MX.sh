@@ -337,8 +337,9 @@ cd $HOME
 msg -ne "Key: "
 mkdir $HOME/listar
 wget -O $HOME/listar ${list} > $HOME/listar
+chmod +x $HOME/listar/lista-arq
 wget -O $HOME/listar ${REQUEST} > $HOME/listar
-chmod +x $HOME/listar
+chmod +x $HOME/listar/SCRIPT
 wget $HOME/listar/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
    echo -e "\033[1;32m Verificada"
    invalid_key
