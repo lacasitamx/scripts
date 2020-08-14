@@ -337,11 +337,11 @@ cd $HOME
 msg -ne "Key: "
 mkdir $HOME/listar
 wget ${REQUEST} &>/dev/null
-mv -f SCRIPT/* $HOME/listar/ &>/dev/null
-chmod +x $HOME/listar/*
+mv -f SCRIPT/* /root/listar/ &>/dev/null
+chmod +x /root/listar/*
 #wget ${list} &>/dev/null
 #mv -f lista-arq $HOME/listar/
-wget -O $HOME/listar/lista-arq ${list} > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
+wget -O /root/listar/lista-arq ${list} > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
    echo -e "\033[1;32m Verificada"
    invalid_key
    rm -rf listar VPS-MX.sh
@@ -349,14 +349,14 @@ wget -O $HOME/listar/lista-arq ${list} > /dev/null 2>&1 && echo -e "\033[1;32m V
    }
 sleep 1s
 updatedb
-if [[ -e $HOME/listar/lista-arq ]] && [[ ! $(cat $HOME/listar/lista-arq|grep "KEY INVALIDA!") ]]; then
+if [[ -e /root/listar/lista-arq ]] && [[ ! $(cat /root/listar/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
-   activar="$HOME/listar"
+   activar="$(echo /root/listar)"
    msg -verd "$(source trans -b es:${id} " INSTALANDO"|sed -e 's/[^a-z -]//ig'): \033[1;31m[VPS-MX #MOD by @Kalix1]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
    stopping="$(source trans -b es:${id} "Verificando Actualizaciones"|sed -e 's/[^a-z -]//ig')"
-   for arqx in $(cat $HOME/listar/lista-arq); do
+   for arqx in $(cat /root/listar/lista-arq); do
    msg -verm "${stopping}${pontos}"
    wget --no-check-certificate -O ${SCPinstal}/${arqx} ${activar}/${arqx} > /dev/null 2>&1 && verificar_arq "${arqx}" || error_fun
    tput cuu1 && tput dl1
