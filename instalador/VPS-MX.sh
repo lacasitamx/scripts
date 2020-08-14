@@ -195,6 +195,10 @@ msg -ama "               Finalizando Instalacion" && msg bar2
 [[ $(find /etc/newadm/ger-user -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/newadm/ger-user/IDT.log https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/IDT.log &>/dev/null
 [[ $(find /etc/newadm/ger-user -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/newadm/ger-user/tiemlim.log https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/tiemlim.log &>/dev/null
 
+echo -e "RECOMENDADO CAMBIAR EL RESELLER"
+read -p "dijite su nuevo reseller : " casita
+echo "$casita" > ${SCPdir}/message.txt
+echo -e "\e[1;33m RESELLER CAMBIADO CON EXITO"
 wget -O /bin/rebootnb https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/rebootnb &> /dev/null
 chmod +x /bin/rebootnb 
 wget -O /bin/resetsshdrop https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/resetsshdrop &> /dev/null
