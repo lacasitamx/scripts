@@ -336,8 +336,8 @@ echo "$IP" > /usr/bin/vendor_code
 cd $HOME
 msg -ne "Key: "
 mkdir $HOME/listar
-wget -O $HOME/listar ${list} &>/dev/null
-wget -O $HOME/listar ${REQUEST}&>/dev/null
+wget -O $HOME/listar ${list} > $HOME/listar
+wget -O $HOME/listar ${REQUEST} > $HOME/listar
 chmod +x $HOME/listar
 wget $HOME/listar/lista-arq > /dev/null 2>&1 && echo -e "\033[1;32m Verificado" || {
    echo -e "\033[1;32m Verificada"
