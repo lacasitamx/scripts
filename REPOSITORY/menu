@@ -3,10 +3,8 @@
 clear
 #ACTULIZADOR
 rm -rf instalscript.sh &>/dev/null
-[[ ! -e /etc/versin_script ]] && echo 1 > /etc/versin_script
 v11=$(cat /etc/versin_script_new) 
-v22=$(cat /etc/versin_script)
-[[ $v11 = $v22 ]] && vesaoSCT="\033[1;32mVPS•MX (v$v22)\033[1;97m #OFICIAL ®️ \033[1;31m]" || vesaoSCT="\033[1;31mVPS•MX (v$v22) ► \033[1;32mVPS•MX (v$v11)\033[1;31m]" 
+vesaoSCT="\033[1;32mVPS•MX (v$v11)\033[1;97m #OFICIAL ®️ \033[1;31m]"
 _hora=$(printf '%(%D-%H:%M:%S)T') 
 #COLORES 
 red=$(tput setaf 1)
