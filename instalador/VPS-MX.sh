@@ -227,7 +227,7 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "	\e[1;43mLA CASITA DEL TERROR -FINAL\e[0m"'>> .bashrc
 echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
-echo 'ver="/etc/versin_script_new" '>> .bashrc
+echo 'ver="$(cat /etc/versin_script_new)" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
 echo 'echo -e "	\e[43mVERSION:\e[0m\e[1;32m $ver" '>> .bashrc
 echo 'echo "" '>> .bashrc                                           
