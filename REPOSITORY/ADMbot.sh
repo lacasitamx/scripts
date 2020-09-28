@@ -10,18 +10,16 @@ SCPidioma="${SCPdir}/idioma" && [[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
 [[ ! -e "/bin/ShellBot.sh" ]] && wget -O /bin/ShellBot.sh https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh &> /dev/null
 [[ -e /etc/texto-bot ]] && rm /etc/texto-bot
 #VARIAVEL ENTRADA TOKEN
-msg -ama " BOT DE TELEGRAM Mod By MEX \033[1;31m"
+msg -ama " BOT DE TELEGRAM\033[1;31m"
 msg -bar
 if [[ $1 = "id" || -z $(ps aux |grep -v grep |grep -w "ADMbot.sh"|grep dmS|awk '{print $2}') ]]; then
 [[ -z $2 ]] && echo -ne "\033[1;37m$(fun_trans "Digite el Token del bot"): " && read TOKEN || TOKEN="$2"
 [[ -z "$TOKEN" ]] && exit 1 #SEM TOKEN, SEM BOT
 IDIOMA="$(cat ${SCPidioma})" && [[ -z $IDIOMA ]] && IDIOMA="es" #ARGUMENTO 2 (IDIOMA)
-[[ -z $3 ]] && echo -ne "\033[1;37m$(fun_trans "Digite su Usuario"): " && read USERLIB || USERLIB="$3"
+[[ -z $3 ]] && echo -ne "\033[1;37m$(fun_trans "Digite su Usuario ID"): " && read USERLIB || USERLIB="$3"
 [[ -z "$USERLIB" ]] && exit 1 #USUARIO
-[[ -z $4 ]] && echo -ne "\033[1;37m$(fun_trans "Digite su Contraseña"): " && read PASSLIB || PASSLIB="$4"
-[[ -z "$PASSLIB" ]] && exit 1 #SENHA
-[[ -z $2 ]] && [[ -z $3 ]] && [[ -z $4 ]] && {
-screen -dmS telebot ${SCPfrm}/ADMbot.sh id "$TOKEN" "$USERLIB" "$PASSLIB"
+[[ -z $2 ]] && [[ -z $3 ]] && {
+screen -dmS telebot ${SCPfrm}/ADMbot.sh id "$TOKEN" "$USERLIB""
 msg -bar
 exit 0
 }
@@ -174,7 +172,7 @@ local bot_retorno+="$LINE\n"
 							--text "$(echo -e $bot_retorno)" \
 							--parse_mode markdown
 return 0
-elif [[ $1 = ${USERLIB} ]] && [[ $2 = ${PASSLIB} ]]; then
+elif [[ $1 = ${USERLIB} ]]; then
 [[ -z $LIBERADOS ]] && LIBERADOS="${3}" || LIBERADOS="${LIBERADOS} ${3}"
 local bot_retorno+="$LINE\n"
           bot_retorno+="$(fun_trans "LIBERACION EFECTUADA CON EXITO")\n"
@@ -251,10 +249,11 @@ local bot_retorno="$LINE\n"
 ajuda_fun () {
 local bot_retorno="$LINE\n"
          bot_retorno+="$(fun_trans "Hola Amigo")\n"
-         bot_retorno+="$(fun_trans "Bienvenido al BOT") Mod By @Kalix1\n"
+         bot_retorno+="$(fun_trans "Bienvenido al BOT") Conectedmx\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="$(fun_trans "Lista de Comandos Disponibles")\n"
          bot_retorno+="$LINE\n"
+         bot_retorno+="/teste ($(fun_trans "Muestra Tu Id"))\n"
          bot_retorno+="$(fun_trans "COMANDOS")\n"
          bot_retorno+="/online ($(fun_trans "usuarios online"))\n"
          bot_retorno+="/useradd ($(fun_trans "agregar usuario"))\n"
@@ -881,7 +880,7 @@ fi
 }
 teste_fun () {
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "USUARIO"): ${chatuser}\n"
+          bot_retorno+="$(fun_trans "USUARIO ID"): ${chatuser}\n"
           bot_retorno+="$(fun_trans "ARGUMENTOS"): ${comando[@]}\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
