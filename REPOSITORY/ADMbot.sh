@@ -19,7 +19,7 @@ IDIOMA="$(cat ${SCPidioma})" && [[ -z $IDIOMA ]] && IDIOMA="es" #ARGUMENTO 2 (ID
 [[ -z $3 ]] && echo -ne "\033[1;37m$(fun_trans "Digite su Usuario ID"): " && read USERLIB || USERLIB="$3"
 [[ -z "$USERLIB" ]] && exit 1 #USUARIO
 [[ -z $2 ]] && [[ -z $3 ]] && {
-screen -dmS telebot ${SCPfrm}/ADMbot.sh id "$TOKEN" "$USERLIB""
+screen -dmS telebot ${SCPfrm}/ADMbot.sh id "$TOKEN" "$USERLIB"
 msg -bar
 exit 0
 }
