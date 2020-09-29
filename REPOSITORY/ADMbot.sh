@@ -161,7 +161,7 @@ local bot_retorno="$LINE\n"
 }
 # SISTEMA DE LOGUIN
 ativarid_fun () {
-if [[ ! -z $LIBERADOS ]] && [[ $(echo ${LIBERADOS}|grep -w "$3") ]]; then
+if [[ $(echo $ide|grep "${chatuser}") = "" ]]; then
 local bot_retorno+="$LINE\n"
           bot_retorno+="$(fun_trans "ACESSO LIBERADO")\n"
           bot_retorno+="$LINE\n"
@@ -173,7 +173,7 @@ local bot_retorno+="$LINE\n"
 							--parse_mode markdown
 return 0
 elif [[ $1 = ${USERLIB} ]]; then
-[[ -z $LIBERADOS ]] && LIBERADOS="${3}" || LIBERADOS="${LIBERADOS} ${3}"
+ide="${3}" || ide="${ide} ${3}"
 local bot_retorno+="$LINE\n"
           bot_retorno+="$(fun_trans "LIBERACION EFECTUADA CON EXITO")\n"
           bot_retorno+="$LINE\n"
@@ -898,14 +898,16 @@ while true; do
     ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
     for id in $(ShellBot.ListUpdates); do
 	    chatuser="$(echo ${message_chat_id[$id]}|cut -d'-' -f2)"
+	ide="${USERLIB}"
 	    echo $chatuser >&2
+	
 	    comando=(${message_text[$id]})
 	    case ${comando[0]} in
 	      /[Tt]este|[Tt]este)teste_fun &;;
 		  /[Aa]juda|[Aa]juda|[Hh]elp|/[Hh]elp)ajuda_fun &;;
 		  /[Ss]tart|[Ss]tart|[Cc]omecar|/[Cc]omecar)ajuda_fun &;;
 		  /[Ll]ogar|[Ll]ogar|[Ll]oguin|/[Ll]oguin)ativarid_fun "${comando[1]}" "${comando[2]}" "$chatuser";;
-		  *)if [[ ! -z $LIBERADOS ]] && [[ $(echo ${LIBERADOS}|grep -w "${chatuser}") ]]; then
+		  *)if [[ $(echo $ide|grep -w "${chatuser}") ]]; then
              case ${comando[0]} in
              [Oo]nline|/[Oo]nline|[Oo]nlines|/[Oo]nlines)online_fun &;;
              [Cc]riptar|/[Cc]riptar|[Cc]ript|/[Cc]ript)cript_fun "${comando[@]}" &;;
@@ -924,5 +926,5 @@ while true; do
              [[ ! -z "${comando[0]}" ]] && blockfun &
              fi;;
            esac
-    done
+           done
 done
