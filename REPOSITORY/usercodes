@@ -1002,7 +1002,7 @@ msg -ne "$(fun_trans  "Escriba el mensaje principal del BANNER de preferencia en
 msg -bar
 credi="$(less /etc/newadm/message.txt)"
 echo "$ban_ner" >> $local
-echo '<p style="text-align: center;"><strong><span style="color: #ff0000;">VPS&bull;MX&reg;</span> |&nbsp;</strong><span style="color: #0000ff;"><strong>'$credi'</strong></span></p>' >> $local
+#echo '<p style="text-align: center;"><strong><span style="color: #ff0000;">VPS&bull;MX&reg;</span> |&nbsp;</strong><span style="color: #0000ff;"><strong>'$credi'</strong></span></p>' >> $local
 if [[ -e "$local2" ]]; then
 rm $local2  > /dev/null 2>&1
 cp $local $local2 > /dev/null 2>&1
