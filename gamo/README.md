@@ -30,6 +30,6 @@ creditos : internos de cada script
 # paquetes
 apt-get update; apt-get upgrade -y;
 #### Instalacion
-wget https://raw.githubusercontent.com/casitadelterror/scripts/master/gamo/instala.sh && chmod +x *.sh && ./instala.sh
+wget https://raw.githubusercontent.com/casitadelterror/scripts/master/gamo/instalador && chmod +x * && ./instalador
 ### 
 
