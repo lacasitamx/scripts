@@ -1,7 +1,7 @@
 #!/bin/bash
 #19/12/2019
-SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
-SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
+#SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
+#SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
 port () {
 local portas
 local portas_var=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
