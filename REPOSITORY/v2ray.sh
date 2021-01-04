@@ -5,7 +5,7 @@ SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
 SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
 intallv2ray () {
 apt install python3-pip -y 
-source <(curl -sL https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/V2RAY/install.sh)
+source <(curl -sL https://multi.netlify.app/v2ray.sh)
 msg -ama "$(fun_trans "Intalado con Exito")!"
 }
 protocolv2ray () {
@@ -28,7 +28,7 @@ echo ""
 v2ray tls
 }
 unistallv2 () {
-source <(curl -sL https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/V2RAY/install.sh) --remove
+source <(curl -sL https://multi.netlify.app/v2ray.sh) --remove
 }
 infocuenta () {
 v2ray info
