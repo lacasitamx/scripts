@@ -1,4 +1,12 @@
 #!/bin/bash
+clear
+cd $HOME
+SCPdir="/etc/newadm"
+SCPinstal="$HOME/install"
+SCPidioma="${SCPdir}/idioma"
+SCPusr="${SCPdir}/ger-user"
+SCPfrm="/etc/ger-frm"
+SCPinst="/etc/ger-inst"
 #SCRIPT INTERNO BY KALIX1
 #TESTIANDO SCRIPTS
 msg () {
