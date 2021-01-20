@@ -216,6 +216,10 @@ echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
 echo -e "\033[1;41m                     sudo menu                        \033[0;37m" && msg -bar2
 sleep 5
 }
+[[ ! -d ${SCPdir} ]] && mkdir ${SCPdir}
+[[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
+[[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
+[[ ! -d ${SCPinst} ]] && mkdir ${SCPinst}
 verificar_arq () {
 [[ ! -d ${SCPdir} ]] && mkdir ${SCPdir}
 [[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
