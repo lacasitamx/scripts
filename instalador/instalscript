@@ -2,6 +2,7 @@
 clear
 cd $HOME
 SCPdir="/etc/newadm"
+mkdir ${SCPdir} &>/dev/null
 SCPinstal="$HOME/install"
 SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/ger-user"
