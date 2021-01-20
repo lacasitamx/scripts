@@ -246,6 +246,7 @@ echo -e "        INSTALANDO PAQUETES........"
 inst_components
 function_verify
 link=https://raw.githubusercontent.com/casitadelterror/scripts/master/REPOSITORY
+casita=("ADMbot.sh" "C-SSR.sh" "Crear-Demo.sh" "PDirect.py" "PGet.py" "POpen.py" "PPriv.py" "PPub.py" "Shadowsocks-R.sh" "Shadowsocks-libev.sh" "Unlock-Pass-VULTR.sh" "apacheon.sh" "blockBT.sh" "budp.sh" "dns-netflix.sh" "dropbear.sh" "fai2ban.sh" "gestor.sh" "menu" "message.txt" "openvpn.sh" "paysnd.sh" "ports.sh" "shadowsocks.sh" "sockspy.sh" "speed.sh" "speedtest.py" "squid.sh" "squidpass.sh" "ssl.sh" "tcp.sh" "ultrahost" "usercodes" "utils.sh" "v2ray.sh")
 wget -O /usr/bin/trans https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/trans &> /dev/null
 wget -O /bin/Desbloqueo.sh https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/Desbloqueo.sh &> /dev/null
 chmod +x /bin/Desbloqueo.sh
@@ -290,20 +291,18 @@ curl -s --max-time 10 -d "chat_id=$IDB2&disable_web_page_preview=1&text=$MSG" $U
 
 echo -e "\033[1;34mSE ENVIO MENSAJE DE PRUEBA SI NO LLEGA CONTACTE A @? "
 }
+#ESTRAYENDO RECURSOS DE LOS ARCHIVOS
 pontos="*"
-#
-_repomx=("ADMbot.sh" "C-SSR.sh" "Crear-Demo.sh" "PDirect.py" "PGet.py" "POpen.py" "PPriv.py" "PPub.py" "Shadowsocks-R.sh" "Shadowsocks-libev.sh" "Unlock-Pass-VULTR.sh" "apacheon.sh" "blockBT.sh" "budp.sh" "dns-netflix.sh" "dropbear.sh" "fai2ban.sh" "gestor.sh" "menu" "message.txt" "openvpn.sh" "paysnd.sh" "ports.sh" "shadowsocks.sh" "sockspy.sh" "speed.sh" "speedtest.py" "squid.sh" "squidpass.sh" "ssl.sh" "tcp.sh" "ultrahost" "usercodes" "utils.sh" "v2ray.sh")
-for _archi in ${_repomx[@]}; do
-   stopping="Iniciando Descarga.."
+for arqx in ${casita[@]}; do
+   stopping="$(source trans -b es:${id} "Descargando Recursos"|sed -e 's/[^a-z -]//ig')"
    msg -verm "${stopping}${pontos}"
    tput cuu1 && tput dl1
    pontos+="*"
-	[[ -e ${SCPinstal}/${_archi} ]] && rm -rf ${SCPinstal}/${_archi} >/dev/null 2>&1
-	wget -c -P ${SCPinstal} $link/${_archi} &>/dev/null && verificar_arq "${_archi}"
+	wget -c -P ${SCPinstal} $link/${arqx} &>/dev/null && verificar_arq "${arqx}"
 done
 sleep 1s
 msg -bar
-Key="ScriptMx/Casita/Kalix-8.1/12345*456*"
+Key="VpsMx/Casita/Kalix-8.1/12345*456*Fr33"
    cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2
    echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2
    mv -f /etc/bash.bashrc.2 /etc/bash.bashrc
