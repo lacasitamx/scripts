@@ -34,7 +34,7 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 function_verify () {
   
   ### INTALAR VERCION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/casitadelterror/scripts/master/vercion")
+  v1=$(curl -sSL "https://raw.githubusercontent.com/lacasitamx/scripts/master/vercion")
   echo "$v1" > /etc/versin_script
   }
 #testiando
