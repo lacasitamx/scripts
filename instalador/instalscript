@@ -181,7 +181,15 @@ msg -ama "               Finalizando Instalacion" && msg bar2
 [[ $(find /etc/newadm/ger-user -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/newadm/ger-user/IDT.log https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/IDT.log &>/dev/null
 [[ $(find /etc/newadm/ger-user -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/newadm/ger-user/tiemlim.log https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/tiemlim.log &>/dev/null
 msg -bar
-
+echo -e "	\e[43mCAMBIO DE RESELLER\e[0m"
+msg -bar
+read -p " INGRESE SU NUEVO RESELLER:> " lacasita
+echo "$lacasita" >${SCPdir}/message.txt
+msg -ne "RESELLER AGREGADO CON ÉXITO"
+msg -bar
+msg -ama "SU NUEVO RESELLER ES: $(cat ${SCPdir}/message.txt)"
+msg -bar
+read -p "ENTER PARA FINALIZAR"
 sleep 4.s
 wget -O /bin/rebootnb https://raw.githubusercontent.com/VPS-MX/VPS-MX-8.0/master/ArchivosUtilitarios/rebootnb &> /dev/null
 chmod +x /bin/rebootnb 
