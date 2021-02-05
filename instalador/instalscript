@@ -198,6 +198,7 @@ chmod +x /bin/resetsshdrop
 wget -O /etc/versin_script_new https://raw.githubusercontent.com/lacasitamx/scripts/master/vercion &>/dev/null
 msg -bar2
 #
+rm -rf instalscript
 echo '#!/bin/sh -e' > /etc/rc.local
 sudo chmod +x /etc/rc.local
 echo "sudo rebootnb" >> /etc/rc.local
