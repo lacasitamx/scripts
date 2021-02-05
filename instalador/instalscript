@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 clear
 cd $HOME
 SCPdir="/etc/newadm"
@@ -18,8 +18,7 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
   -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verm)cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}";;
   -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -bra)cor="${BRAN}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;  -bra)cor="${BRAN}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
   -bar2)cor="\e[0;31m========================================\e[0m" && echo -e "${cor}${SEMCOR}";;
   -bar)cor="\e[1;31m——————————————————————————————————————————————————————" && echo -e "${cor}${SEMCOR}";;
  esac
@@ -32,7 +31,7 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 #IP=$(wget -qO- ipv4.icanhazip.com)
 
 function_verify () {
-  
+
   ### INTALAR VERCION DE SCRIPT
   v1=$(curl -sSL "https://raw.githubusercontent.com/lacasitamx/scripts/master/vercion")
   echo "$v1" > /etc/versin_script
@@ -168,7 +167,7 @@ msg -bar2
 }
 funcao_idioma () {
 msg -bar2
-figlet "    -VPS MX-" | lolcat 
+figlet "    -VPS MX-" | lolcat
 echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL"
 msg -bar2
 pv="$(echo es)"
@@ -181,18 +180,9 @@ msg -ama "               Finalizando Instalacion" && msg bar2
 [[ $(find /etc/newadm/ger-user -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/newadm/ger-user/IDT.log https://raw.githubusercontent.com/lacasitamx/VPSMX/master/ArchivosUtilitarios/IDT.log &>/dev/null
 [[ $(find /etc/newadm/ger-user -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/newadm/ger-user/tiemlim.log https://raw.githubusercontent.com/lacasitamx/VPSMX/master/ArchivosUtilitarios/tiemlim.log &>/dev/null
 msg -bar
-echo -e "	\e[43mCAMBIO DE RESELLER\e[0m"
-msg -bar
-read -p " INGRESE SU NUEVO RESELLER:> " lacasita
-echo "$lacasita" >${SCPdir}/message.txt
-msg -ne "RESELLER AGREGADO CON ÉXITO"
-msg -bar
-msg -ama "SU NUEVO RESELLER ES: $(cat ${SCPdir}/message.txt)"
-msg -bar
-read -p "ENTER PARA FINALIZAR"
 sleep 4.s
 wget -O /bin/rebootnb https://raw.githubusercontent.com/lacasitamx/VPSMX/master/ArchivosUtilitarios/rebootnb &> /dev/null
-chmod +x /bin/rebootnb 
+chmod +x /bin/rebootnb
 wget -O /bin/resetsshdrop https://raw.githubusercontent.com/lacasitamx/VPSMX/master/ArchivosUtilitarios/resetsshdrop &> /dev/null
 chmod +x /bin/resetsshdrop
 wget -O /etc/versin_script_new https://raw.githubusercontent.com/lacasitamx/scripts/master/vercion &>/dev/null
@@ -217,9 +207,9 @@ echo 'echo "" '>> .bashrc
 echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
-echo 'echo "" '>> .bashrc                                               
+echo 'echo "" '>> .bashrc                                          
 echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA: sudo adm | menu "'>> .bashrc
-echo 'echo -e "\e[1;35m	VERSIÓN: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc
+echo 'echo -e "\e[1;35m VERSIÓN: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo -e "         COMANDOS DISPONIBLES PARA ENTRAR AL PANEL "
 echo -e "\033[1;41m                    sudo adm | menu                        \033[0;37m" && msg -bar2
@@ -241,7 +231,7 @@ case $1 in
 "ssl.sh")ARQ="${SCPinst}/";; #Instalacao
 "shadowsocks.sh")ARQ="${SCPinst}/";; #Instalacao
 "Shadowsocks-libev.sh")ARQ="${SCPinst}/";; #Instalacao
-"Shadowsocks-R.sh")ARQ="${SCPinst}/";; #Instalacao 
+"Shadowsocks-R.sh")ARQ="${SCPinst}/";; #Instalacao
 "v2ray.sh")ARQ="${SCPinst}/";; #Instalacao
 "budp.sh")ARQ="${SCPinst}/";; #Instalacao
 "sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py")ARQ="${SCPinst}/";; #Instalacao
@@ -277,12 +267,12 @@ msg -bar
 echo -e "\033[1;94m Es una opcion para notificar cuando\n un usuario sea bloquedo o este expirado, e info de VPS."
 echo -e "\033[1;97m Deve usar el BOT de Telegram @Noti_VPSMX_Bot"
 echo -e "\033[1;92m Para sacar su ID solo Meta el comando /MENU en el BOT @USA1_BOT"
-echo -e "\033[1;92m Aparesera un pequeño menu donde aparesera su  👤 ID"
+echo -e "\033[1;92m Aparesera un pequeño menu donde aparesera su  ? ID"
 msg -bar
 echo -e "\033[1;97mIgrese un nombre para el VPS:\033[0;37m"; read -p " " nombr
 echo "${nombr}" > /etc/newadm/ger-user/nombre.log
 echo -e "\033[1;97mIgrese su ID 👤:\033[0;37m"; read -p " " idbot
-echo "${idbot}" > /etc/newadm/ger-user/IDT.log 
+echo "${idbot}" > /etc/newadm/ger-user/IDT.log
 msg -bar
 echo -e "\033[1;32m         ID AGREGADO CON EXITO"
 msg -bar
@@ -307,7 +297,7 @@ for arqx in ${casita[@]}; do
    msg -verm "${stopping}${pontos}"
    tput cuu1 && tput dl1
    pontos+="*"
-	wget -c -P ${SCPinstal} $link/${arqx} &>/dev/null && verificar_arq "${arqx}"
+        wget -c -P ${SCPinstal} $link/${arqx} &>/dev/null && verificar_arq "${arqx}"
 done
 sleep 1s
 msg -bar
@@ -318,12 +308,11 @@ Key="VpsMx/LaCasita/Kalix/v8.1/1K45*456*Fr33"
    echo "${SCPdir}/menu" > /usr/bin/menu && chmod +x /usr/bin/menu
    echo "${SCPdir}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm
    echo "$Key" > ${SCPdir}/key.txt
-   [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}   
+   [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma}
-   echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"
-   echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @Noti_VPSMX_Bot)"
+   echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"   echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @Noti_VPSMX_Bot)"
    msg -bar2
-   read -p " [ s | n ]: " NOTIFY   
+   read -p " [ s | n ]: " NOTIFY
    [[ "$NOTIFY" = "s" || "$NOTIFY" = "S" ]] && NOTIFY
    msg -bar
    [[ ${byinst} = "true" ]] && install_fim
