@@ -218,11 +218,11 @@ echo 'mess1="$(less /etc/newadm/message.txt)" ' >> .bashrc
 echo 'echo "" '>> .bashrc
 echo 'echo -e "\033[92m        RESELLER : $mess1 "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
-echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA: adm | menu "'>> .bashrc
+echo 'echo -e "\033[97m   PARA MOSTAR PANEL BASH ESCRIBA: sudo adm | menu "'>> .bashrc
 echo 'echo -e "\e[1;35m	VERSIÓN: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo -e "         COMANDOS DISPONIBLES PARA ENTRAR AL PANEL "
-echo -e "\033[1;41m                     adm | menu                        \033[0;37m" && msg -bar2
+echo -e "\033[1;41m                    sudo adm | menu                        \033[0;37m" && msg -bar2
 sleep 5
 }
 verificar_arq () {
